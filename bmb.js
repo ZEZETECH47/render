@@ -14,28 +14,15 @@ app.use('/lib', express.static(path.join(__dirname, 'lib')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Custom route imports
-let server = require('./qr');
-let code = require('./pair');
-require('events').EventEmitter.defaultMaxListeners = 500;
+// Import routes
+const pairRoute = require('./lib/pair');
+const qrRoute = require('./lib/qr');
 
-// API routes
-app.use('/qr', server);
-app.use('/code', code);
+app.use('/pair', pairRoute);
+app.use('/qr', qrRoute);
 
-// Serve specific HTML files if needed
-app.get('/pair', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'pair.html'));
-});
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'main.html'));
-});
-
+// Start server
 app.listen(PORT, () => {
-    console.log(`
-Bmb-Tech-code is Live
-
-Server running on http://localhost:` + PORT)
+  console.log(`Server running on port ${PORT}`);
 });
-
-module.exports = app;
+      
