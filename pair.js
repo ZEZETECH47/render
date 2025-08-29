@@ -20,7 +20,7 @@ function removeFile(FilePath){
 router.get('/', async (req, res) => {
     const id = makeid();
     let num = req.query.number;
-        async function FLASH_MD_PAIR_CODE() {
+        async function BMB_TECH_PAIR_CODE() {
         const {
             state,
             saveCreds
@@ -54,31 +54,34 @@ router.get('/', async (req, res) => {
                 let data = fs.readFileSync(__dirname + `/temp/${id}/creds.json`);
                 await delay(8000);
                let b64data = Buffer.from(data).toString('base64');
-               let session = await Pair_Code_By_France_King.sendMessage(Pair_Code_By_France_King.user.id, { text: ''+ b64data });
+               let session = await Pair_Code_By_France_King.sendMessage(Pair_Code_By_France_King.user.id, { text: ' '+ b64data });
 
-               let FLASH_MD_TEXT = `
-
-
+               let BMB_TECH_TEXT = `
 
 
-❒❒❒❒❒❒❒❒❒❒❒❒❒❒❒❒❒❒❒❒❒❒
-*_Pair Code Connected by B.M.B-TECH*
-______________________________________
-╔════◇
-║ *『 APPRECIATED 👍 FOR  SHOWING LOVE』*
-║ _You Have Completed the First Step to Deploy a Whatsapp Bot._
-╚════════════════════════╝
-╔═════◇
-║  『••• 𝗩𝗶𝘀𝗶𝘁 𝗙𝗼𝗿 𝗛𝗲𝗹𝗽 •••』
-║❒ *Owner:* _https://wa.me/255767862457_
-║❒ *Repo:* _https://github.com/bwbxmd/B.M.B-TECH_
-║❒ *WaChannel:* _https://whatsapp.com/channel/0029VawO6hgF6sn7k3SuVU3z_
-║❒ *Follow GitHub:*https://github.com/bwbxmd__
-╚════════════════════════╝
-_____________________________________
-❒❒❒❒❒❒❒❒❒❒❒❒❒❒❒❒❒❒❒❒❒❒
+
+
+*🎉 SESSION GENERATED SUCCESSFULLY! ✅*
+
+*💪 Empowering Your Experience with bmb tech Bot*
+
+*👥 Join to group free chat enjoy with friends🤙*
+🖇️ https://chat.whatsapp.com/BKoqNbYGCkK5apBNP0nzI3
+
+*🌟 Show your support by giving our repo a star! 🌟*
+🔗 https://github.com/Dev-bmbtech/BMB-XMD
+
+*💭 Need help? Join our support channel:*
+📢 💬
+https://whatsapp.com/channel/0029VawO6hgF6sn7k3SuVU3z
+
+*📚 Learn & Explore More with Tutorials:*
+🪄 YouTube Channel https://www.youtube.com/@bmb-xmd
+
+*🥀 Powered by dev bmb Bot & bmb tech Inc 🥀*
+*Together, we build the future of automation! 🚀*
 `
- await Pair_Code_By_France_King.sendMessage(Pair_Code_By_France_King.user.id,{text:FLASH_MD_TEXT},{quoted:session})
+ await Pair_Code_By_France_King.sendMessage(Pair_Code_By_France_King.user.id,{text:BMB_TECH_TEXT},{quoted:session})
  
 
         await delay(100);
@@ -86,7 +89,7 @@ _____________________________________
         return await removeFile('./temp/'+id);
             } else if (connection === "close" && lastDisconnect && lastDisconnect.error && lastDisconnect.error.output.statusCode != 401) {
                     await delay(10000);
-                    FLASH_MD_PAIR_CODE();
+                    BMB_TECH_PAIR_CODE();
                 }
             });
         } catch (err) {
@@ -97,7 +100,6 @@ _____________________________________
          }
         }
     }
-    return await FLASH_MD_PAIR_CODE()
+    return await BMB_TECH_PAIR_CODE()
 });
 module.exports = router
-          
