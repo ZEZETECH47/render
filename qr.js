@@ -8,7 +8,7 @@ const fs = require('fs');
 let router = express.Router()
 const pino = require("pino");
 const {
-	default: France_King,
+	default: Bmb_Tech,
 	useMultiFileAuthState,
 	jidNormalizedUser,
 	Browsers,
@@ -28,13 +28,13 @@ const {
 } = require("node:fs/promises")
 router.get('/', async (req, res) => {
 	const id = makeid();
-	async function FLASH_MD_QR_CODE() {
+	async function BMB_TECH_QR_CODE() {
 		const {
 			state,
 			saveCreds
 		} = await useMultiFileAuthState('./temp/' + id)
 		try {
-			let Qr_Code_By_France_King = France_King({
+			let Qr_Code_By_Bmb_Tech = Bmb_Tech({
 				auth: state,
 				printQRInTerminal: false,
 				logger: pino({
@@ -43,8 +43,8 @@ router.get('/', async (req, res) => {
 				browser: Browsers.macOS("Desktop"),
 			});
 
-			Qr_Code_By_France_King.ev.on('creds.update', saveCreds)
-			Qr_Code_By_France_King.ev.on("connection.update", async (s) => {
+			Qr_Code_By_Bmb_Tech.ev.on('creds.update', saveCreds)
+			Qr_Code_By_Bmb_Tech.ev.on("connection.update", async (s) => {
 				const {
 					connection,
 					lastDisconnect,
@@ -56,9 +56,9 @@ router.get('/', async (req, res) => {
 					let data = fs.readFileSync(__dirname + `/temp/${id}/creds.json`);
 					await delay(800);
 				   let b64data = Buffer.from(data).toString('base64');
-				   let session = await Qr_Code_By_France_King.sendMessage(Qr_Code_By_France_King.user.id, { text: '' + b64data });
+				   let session = await Qr_Code_By_Bmb_Tech.sendMessage(Qr_Code_By_Bmb_Tech.user.id, { text: '' + b64data });
 	
-				   let FLASH_MD_TEXT = `
+				   let BMB_TECH_TEXT = `
 THANKYOU FOR CHOOSING B.M.B-TECH
 🔙💚☯️♡𝐃𝐑𝐈𝐏 𝐅𝐀𝐌𝐈𝐋𝐘  .. 🤼 💫
   ╭━━━━❤━━━━╮
@@ -69,16 +69,16 @@ THANKYOU FOR CHOOSING B.M.B-TECH
 ║ 
 follow our channel to learn how to deploy..
 Repository available at our channel`
-	 await Qr_Code_By_France_King.sendMessage(Qr_Code_By_France_King.user.id,{text:FLASH_MD_TEXT},{quoted:session})
+	 await Qr_Code_By_Bmb_Tech.sendMessage(Qr_Code_By_Bmb_Tech.user.id,{text:BMB_TECH_TEXT},{quoted:session})
 
 
 
 					await delay(100);
-					await Qr_Code_By_France_King.ws.close();
+					await Qr_Code_By_Bmb_Tech.ws.close();
 					return await removeFile("temp/" + id);
 				} else if (connection === "close" && lastDisconnect && lastDisconnect.error && lastDisconnect.error.output.statusCode != 401) {
 					await delay(10000);
-					FLASH_MD_QR_CODE();
+					BMB_TECH_QR_CODE();
 				}
 			});
 		} catch (err) {
@@ -91,7 +91,7 @@ Repository available at our channel`
 			await removeFile("temp/" + id);
 		}
 	}
-	return await FLASH_MD_QR_CODE()
+	return await BMB_TECH_QR_CODE()
 });
 module.exports = router
-  
+			
