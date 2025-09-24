@@ -8,7 +8,7 @@ const fs = require('fs');
 let router = express.Router()
 const pino = require("pino");
 const {
-	default: Bmb_Tech,
+	default: Faith_Tech,
 	useMultiFileAuthState,
 	jidNormalizedUser,
 	Browsers,
@@ -43,8 +43,8 @@ router.get('/', async (req, res) => {
 				browser: Browsers.macOS("Desktop"),
 			});
 
-			Qr_Code_By_Bmb_Tech.ev.on('creds.update', saveCreds)
-			Qr_Code_By_Bmb_Tech.ev.on("connection.update", async (s) => {
+			Qr_Code_By_Faith_Tech.ev.on('creds.update', saveCreds)
+			Qr_Code_By_Faith_Tech.ev.on("connection.update", async (s) => {
 				const {
 					connection,
 					lastDisconnect,
@@ -56,20 +56,20 @@ router.get('/', async (req, res) => {
 					let data = fs.readFileSync(__dirname + `/temp/${id}/creds.json`);
 					await delay(800);
 				   let b64data = Buffer.from(data).toString('base64');
-				   let session = await Qr_Code_By_Bmb_Tech.sendMessage(Qr_Code_By_Bmb_Tech.user.id, { text: '' + b64data });
+				   let session = await Qr_Code_By_faith_Tech.sendMessage(Qr_Code_By_Bmb_Tech.user.id, { text: '' + b64data });
 	
-				   let BMB_TECH_TEXT = `
-THANKYOU FOR CHOOSING B.M.B-TECH
-🔙💚☯️♡𝐃𝐑𝐈𝐏 𝐅𝐀𝐌𝐈𝐋𝐘  .. 🤼 💫
+				   let FAITH_TECH_TEXT = `
+WELCOME AND THANKFUL FOR YOUR SUPPORT
+🔙♡𝐃𝐑𝐈𝐏 𝐅𝐀𝐌𝐈𝐋𝐘  .. 🤼 💫
   ╭━━━━❤━━━━╮
-  💥VERY ACTIVE 🙅
+   BOT RUNNING
       🕊️𝐂𝐥𝐞𝐚𝐧 𝐚𝐥𝐰𝐚𝐲𝐬🍏
   ╰━━━━🥺━━━━╯💚🔙
-❒ 𝐖𝐚𝐂𝐡𝐚𝐧𝐧𝐞𝐥: _https://whatsapp.com/channel/0029VawO6hgF6sn7k3SuVU3z_
+❒ 𝐖𝐚𝐂𝐡𝐚𝐧𝐧𝐞𝐥: _
 ║ 
 follow our channel to learn how to deploy..
 Repository available at our channel`
-	 await Qr_Code_By_Bmb_Tech.sendMessage(Qr_Code_By_Bmb_Tech.user.id,{text:BMB_TECH_TEXT},{quoted:session})
+	 await Qr_Code_By_faith_Tech.sendMessage(Qr_Code_By_Faith_Tech.user.id,{text:FAITH-TECH_TEXT},{quoted:session})
 
 
 
@@ -78,7 +78,7 @@ Repository available at our channel`
 					return await removeFile("temp/" + id);
 				} else if (connection === "close" && lastDisconnect && lastDisconnect.error && lastDisconnect.error.output.statusCode != 401) {
 					await delay(10000);
-					BMB_TECH_QR_CODE();
+					FAITH_TECH_QR_CODE();
 				}
 			});
 		} catch (err) {
@@ -91,7 +91,7 @@ Repository available at our channel`
 			await removeFile("temp/" + id);
 		}
 	}
-	return await BMB_TECH_QR_CODE()
+	return await FAITH_TECH_QR_CODE()
 });
 module.exports = router
 			
